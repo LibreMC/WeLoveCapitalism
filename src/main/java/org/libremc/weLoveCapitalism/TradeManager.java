@@ -13,6 +13,8 @@ import java.sql.SQLException;
 import java.util.HashSet;
 import java.util.UUID;
 
+import static org.libremc.weLoveCapitalism.ConfigManager.ConfigMap;
+
 public class TradeManager {
 
     public static HashSet<Trade> Trades;
@@ -236,11 +238,11 @@ public class TradeManager {
     }
 
     public static int embargoUpkeep(int total_foreign_trade){
-        return total_foreign_trade * 5 + 100;
+        return (total_foreign_trade/ConfigMap.get(ConfigManager.CONFIG.EMBARGO_DIVISOR)) + ConfigMap.get(ConfigManager.CONFIG.EMBARGO_BASE);
     }
 
     public static int tariffUpkeep(int total_foreign_trade, int tariff_percentage){
-        return (int) Math.round((double)total_foreign_trade * tariff_percentage / 30) + 15;
+        return (int) Math.round((double)total_foreign_trade * tariff_percentage / ConfigMap.get(ConfigManager.CONFIG.TARIFF_DIVISOR)) + ConfigMap.get(ConfigManager.CONFIG.TARIFF_BASE);
     }
 
 

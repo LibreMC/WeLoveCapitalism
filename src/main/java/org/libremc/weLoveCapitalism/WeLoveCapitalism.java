@@ -36,6 +36,8 @@ public final class WeLoveCapitalism extends JavaPlugin{
             getDataFolder().mkdirs();
         }
 
+        ConfigManager.init();
+
         Objects.requireNonNull(this.getCommand("wlc")).setExecutor(new WLCCommand());
         Objects.requireNonNull(this.getCommand("wlc")).setTabCompleter(new TabComplete());
         getServer().getPluginManager().registerEvents(new BlockPlaceListener(), this);

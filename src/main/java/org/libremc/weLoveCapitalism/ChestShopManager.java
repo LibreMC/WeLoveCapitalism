@@ -175,8 +175,10 @@ public class ChestShopManager {
                 int balance_after = (int) player_nation.getAccount().getHoldingBalance(false) + to_pay;
                 player_nation.getAccount().setBalance(balance_after, "Tariff paid");
             }
+        }
 
-
+        if(item.getAmount() > 99){
+            item.setAmount(99);
         }
 
         Trade trade;
